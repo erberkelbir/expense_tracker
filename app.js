@@ -5,6 +5,37 @@ const ejs = require("ejs");
 const _ = require("lodash");
 var path = require ('path');
 const { log } = require("console");
+const items = [
+  {
+    friend_username: 'John',
+    cat_id: 1,
+    money: 100,
+    date: '01-01-2022',
+    description: 'Grocery shopping',
+  },
+  {
+    friend_username: 'Maria',
+    cat_id: 3,
+    money: 500,
+    date: '01-01-2022',
+    description: 'Grocery shopping',
+  },
+  {
+    friend_username: 'John',
+    cat_id: 1,
+    money: 100,
+    date: '01-01-2022',
+    description: 'Grocery shopping',
+  },
+  {
+    friend_username: 'John',
+    cat_id: 1,
+    money: 100,
+    date: '01-01-2022',
+    description: 'Grocery shopping',
+  },
+  // ... more items
+];
 
 const app = express();
 app.use(express.static(path.join(__dirname + '../public')));
@@ -75,7 +106,7 @@ app.get('/signup', (req, res) => {
 
 app.get('/friends', (req, res) => {
   // Render the friends page
-  res.render('friends_page');
+  res.render('friends_page' , {items: items});
 });
 
 app.get('/logout', function(req, res) {

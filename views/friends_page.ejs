@@ -120,42 +120,18 @@
           <div class="bottom-left shadowx">
             <h2>Friend's Transaction History</h2>
             <div class="list-view1">
-              <div class="list-item1">
-                <div class="item-info1">
-                  <div class="cat_id">friend_username</div>
-                  <div class="cat_id">Cat_ID: 1</div>
-                  <div class="money">Money: $100</div>
-                  <div class="date">Date: 01-01-2022</div>
+              <% items.forEach(item => { %>
+                <div class="list-item1">
+                  <div class="item-info1">
+                    <div class="friend_username"><%= item.friend_username %></div>
+                    <div class="cat_id">Cat_ID: <%= item.cat_id %></div>
+                    <div class="money">Money: $<%= item.money %></div>
+                    <div class="date">Date: <%= item.date %></div>
+                  </div>
+                  <div class="description">Description: <%= item.description %></div>
                 </div>
-                <div class="description">Description: Grocery shopping</div>
-              </div>
-              <div class="list-item1">
-                <div class="item-info1">
-                  <div class="cat_id">friend_username</div>
-                  <div class="cat_id">Cat_ID: 1</div>
-                  <div class="money">Money: $100</div>
-                  <div class="date">Date: 01-01-2022</div>
-                </div>
-                <div class="description">Description: Grocery shopping</div>
-              </div>
-              <div class="list-item1">
-                <div class="item-info1">
-                  <div class="cat_id">friend_username</div>
-                  <div class="cat_id">Cat_ID: 1</div>
-                  <div class="money">Money: $100</div>
-                  <div class="date">Date: 01-01-2022</div>
-                </div>
-                <div class="description">Description: Grocery shopping</div>
-              </div>
-              <div class="list-item1">
-                <div class="item-info1">
-                  <div class="cat_id">friend_username</div>
-                  <div class="cat_id">Cat_ID: 1</div>
-                  <div class="money">Money: $100</div>
-                  <div class="date">Date: 01-01-2022</div>
-                </div>
-                <div class="description">Description: Grocery shopping</div>
-              </div>
+              <% }) %>
+             
               <!-- Add more list items here -->
             </div>
           </div>
