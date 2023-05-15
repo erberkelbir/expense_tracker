@@ -1,0 +1,27 @@
+{
+  "name": "expense_tracker",
+  "version": "1.0.0",
+  "description": "Expense Tracker app for CENG 318",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/erberkelbir/expense_tracker.git"
+  },
+  "author": "Erberk Elbir",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/erberkelbir/expense_tracker/issues"
+  },
+  "homepage": "https://github.com/erberkelbir/expense_tracker#readme",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "chart.js": "^4.3.0",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "lodash": "^4.17.21",
+    "path": "^0.12.7"
+  }
+}
