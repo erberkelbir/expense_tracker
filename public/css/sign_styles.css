@@ -1,0 +1,145 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+background: linear-gradient(
+    to right,
+    #FFD3B0 0%,
+    #FFD3B0 50%,
+    #fff 50%,
+    #fff 100%
+);
+
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.expense-tracker {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    justify-content: space-around;
+    margin-top: 2rem;
+}
+
+
+.expense-tracker span {
+    color: #FFD3B0;
+}
+
+.form-control:focus {
+    border-color: #000000;
+    box-shadow: 0 0 0 0.25rem rgba(255, 211, 176, 0.25);
+}
+
+.btn {
+    background-color: #5396b3da;
+    border-color: #858585;
+    border-radius: 10px;
+    height: 45px;
+    color: #fff;
+
+}
+.btn:hover{
+    background-color: #5396b388;/*set the color you want here*/
+}
+
+
+
+.input-group-text {
+    background-color: #fff;
+    border-color: #ced4da;
+}
+
+.input-group-text:hover {
+    cursor: pointer;
+}
+
+.login-form {
+    margin-top: 2rem;
+    background-color: #faf6f6;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 3% 5%;
+    width: 40%;
+    height: 550px;
+    -webkit-box-shadow: 12px 17px 30px 1px rgba(0,0,0,0.52);
+    -moz-box-shadow: 12px 17px 30px 1px rgba(0,0,0,0.52);
+    box-shadow: 12px 17px 30px 1px rgba(0,0,0,0.52);
+
+}
+
+.welcome-text{
+    font-size: 1.5rem;
+    margin-top: 2%;
+    margin-bottom: 0;
+}
+.sign-in-text{
+    font-size: 3rem;
+}
+
+.button-col {
+    flex-direction: column;
+    padding: 3% 5%;
+    display: flex;
+    height: 100%;
+    justify-content: space-evenly;
+}
+
+/* Desktop Styles */
+
+#left-image,
+#right-image {
+  position: fixed;
+  width: 24%; /* Adjust the width as needed */
+  height: auto;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  pointer-events: none;
+  z-index: -1;
+}
+
+#left-image {
+  left: 300px;
+  top: 345px;
+}
+
+#right-image {
+  right: 0;
+  right: 90px;
+  bottom: 350px;
+}
+
+/* Mobile and Tablet Styles */
+@media screen and (max-width: 1000px) {
+    .login-form{
+        width: 80%;
+        padding: 3% 5%;
+        height: 500px;
+    }
+    #left-image,
+    #right-image {
+        width: 30%;
+    }
+    #left-image {
+        left: 0;
+        top: 700px;
+      }
+    #right-image {
+        top: 150px;
+        right: 0;
+        bottom: 700px;
+    }
+    
+    
+}
+
+

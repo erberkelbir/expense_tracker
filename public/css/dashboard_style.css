@@ -1,0 +1,464 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    background-color: #dcdbd8;
+}
+
+.containerx {
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+/* ********************************************************************* */
+
+
+.right-side {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: scroll;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    height: 80%;
+    width: 100%;
+    grid-gap: 3%;
+ 
+}
+/*
+.grid-item:first-child {
+    grid-column: 1 / 3;
+}
+*/
+
+
+
+/* ****************************TOP LEFT***************************** */
+.grid-item1 {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    height: 90%;
+    box-sizing: border-box;
+}  
+
+.top-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 3% 5%;
+    height: 100%;
+    width: 100%;
+    background-color: #3B5D7D;
+    border-radius: 15px;
+    margin: 2% 4%;
+}
+
+.top-left h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #fff;
+}
+.top-left select,
+.top-left input {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.top-left button {
+      width: 250px;
+      height: 50px;
+      background-color: #95D1D5;
+      border-radius: 30px;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+}
+
+.top-left button:hover {
+    background-color: #45a049;
+}
+#category {
+    width: 100%;
+    height: 15%;
+    border-radius: 20px;
+}
+#amount{
+    height: 15%;
+    border-radius: 20px;
+}
+#description{
+    height: 15%;
+    border-radius: 20px;
+}
+/* ********************************************************************* */
+
+
+
+
+
+
+
+
+/* ******************************BOTTOM LEFT ******************************* */
+.grid-item3 {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    height: 90%;
+    box-sizing: border-box;
+    margin-top: -2%;
+}  
+.bottom-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3% 5%;
+    width: 90%;
+    margin: 1% 3%; 
+    height: 100%;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    background-color: #77A69B;
+    border-radius: 20px;
+}
+
+.bottom-left h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.6rem;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+}
+
+
+.list-view {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 350px;
+    padding: 1% 3%;
+    box-sizing: border-box;
+    overflow-y:scroll;
+    
+}
+
+.list-item {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    background-color: #e4dfdf;
+    
+}
+
+.item-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.list-item div {
+    margin-bottom: 0.5rem;
+}
+.bottom-left .description{
+    font-size: 1.2rem;
+}
+
+
+/* *************************************************************************** */
+
+
+
+
+
+
+/* ****************************** TOP RIGHT  ****************************** */
+.top-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    justify-content: space-evenly;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    margin: 1% 5%; /* Change this to your desired color */
+    height: auto;
+    width: auto;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.chart-container {
+    width: 300px;
+    height: 250px;
+}
+/* *************************************************************************** */
+
+
+
+
+
+/* ****************************** BOTTOM RIGHT  ****************************** */
+.grid-item4 {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    height: 90%;
+    box-sizing: border-box;
+    margin-top: -2%;
+}  
+.bottom-right{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 3% 5%;
+    width: 60%;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    background-color:#3B5D7D ;
+
+}
+.bottom-right  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.6rem;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+}
+
+/* *************************************************************************** */
+
+
+.shadowx {
+    -webkit-box-shadow: 4px 6px 4px -3px rgba(0,0,0,0.69);
+-moz-box-shadow: 4px 6px 4px -3px rgba(0,0,0,0.69);
+box-shadow: 4px 6px 4px -3px rgba(0,0,0,0.69);
+}
+
+
+
+/* ****************************** NAV-BAR ****************************** */
+
+.left-side {
+    width: 20%;
+    height: 100vh;
+    background-color: #FFD3B0;
+    border-radius: 15px;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    position: relative; 
+    border-radius: 0px 59px 58px 0px;
+    -moz-border-radius: 0px 59px 58px 0px;
+    -webkit-border-radius: 0px 59px 58px 0px;
+    border: 0px solid #000000;
+    
+}
+
+
+.avatar {
+    display: block;
+    width: 75px;
+    height:75px;
+    background-image: url("https://via.placeholder.com/75x75");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #fff;
+    border-radius: 50%;
+    margin-top: 25px;
+    margin-bottom: 5px;
+}
+.greeting {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.budget {
+    font-size: 36px;
+    font-weight: bold;
+    margin-top: 100px;
+    margin-bottom: 0;
+}
+.description {
+    font-size: 20;
+    color: #555;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+.menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    flex: 1 1 auto;
+}
+.menu a {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: #555;
+    background-color: transparent;
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    transition: background-color 0.2s;
+}
+.menu a:hover {
+    color: #fff;
+}
+.menu a.active {
+    
+    color: #000;
+    font-weight: bold;
+}
+.logout {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    display: block;
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+.logout img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* *************************************************************************** */
+
+
+
+/* Desktop Styles */
+@media screen and (min-width: 769px) {
+    .navbar-toggle {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 1600px) {
+    .navbar-toggle {
+        display: none;
+    }
+    .grid-container {
+        display: grid;
+        grid-gap: 0px;
+        height: 100%;
+        width: 100%;
+    }
+    .grid-item4 {
+        margin-top: 0;
+    }  
+    .grid-item3 {
+        margin-top: 0;
+    } 
+
+}
+
+/* Mobile and Tablet Styles */
+@media screen and (max-width: 1000px) {
+    .left-side {
+        position: fixed;
+        height: 100%;
+        width: 250px;
+        left: -250px;
+        transition: left 0.3s;
+    }
+
+    .right-side {
+        width: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .left-side.open {
+        left: 0;
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        grid-gap: 20px;
+        height: 100%;
+        width: 100%;
+        padding: 5% 6%;
+        margin: 3% 5%;
+    }
+
+    .navbar-toggle {
+        display: block;
+        background-color: transparent;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        z-index: 1000;
+    }
+    .top-left {
+        margin-bottom: 1rem;
+    }
+    .bottom-left {
+        height: auto;
+        padding: 1rem;
+    }
+
+    .list-view {
+        height: auto;
+        width: 100%;
+        height: 350px;
+        box-sizing: border-box;
+        overflow-y:scroll;
+    }
+  
+    
+}
+
+
+/* Tablet Styles */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    
+
+
+}
+
+
