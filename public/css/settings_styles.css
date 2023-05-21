@@ -9,14 +9,17 @@ body {
     overflow: hidden;
     display: flex;
     background-color: #dcdbd8;
- 
+    
 }
 
   
+
+
 .containerx {
     display: flex;
     height: 100%;
     width: 100%;
+    
 }
 
 /* ********************************************************************* */
@@ -25,97 +28,133 @@ body {
 .right-side {
     width: 80%;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    height: 100vh;
     overflow-y: scroll;
-    height: 100%;
 }
 
 .grid-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    height: 100%;
-    width: 100%;
-    padding: 1%;
-    grid-gap: -4%;
-
- 
-}
-
-.grid-item1:last-child {
-    grid-column: 1/3;
-    height: 100%;
-    margin-top: -4.8rem;
-    margin-bottom: -1rem;
-}
-
-.list-view1 {
     display: flex;
     flex-direction: column;
-    width: 100%;
-    height: 350px;
-    padding: 1% 3%;
-    box-sizing: border-box;
-    overflow-y:scroll;
-
-    
+    height: 100%;
+    width: 95%;
+    text-align: center;
+    align-items: center;
+   
 }
-
-.list-item1 {
-    display: flex;
-    flex-direction: column;
-    padding: 3% 5%;
-    margin-bottom: 4%;
-    border: 1px solid #ccc;
-    border-radius: 15px;
-    background-color: #e4dfdf;
-    
+/*
+.grid-item:first-child {
+    grid-column: 1 / 3;
 }
+*/
 
-.item-info1 {
-    display: flex;
-    justify-content: space-between;
-}
-
-
-.bottom-left .description{
-    font-size: 1.2rem;
-    text-align: left;
-}
 
 
 /* ****************************TOP LEFT***************************** */
 .grid-item1 {
+    
     display: flex;
     justify-content: center;
     text-align: center;
+    flex-direction: column;
     width: 100%;
-    height: 75%;
     box-sizing: border-box;
-}   
-
-.top-left {
+    flex: 1;
+    margin-top: 1rem;
+    margin-top: 2%;
+    margin-left: 2%;
+}  
+.grid-item1 .avatar{
+    margin-top: -25px;
+}
+.first-item {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
     padding: 3% 5%;
-    height: 100%;
+    height: auto;
+    width: 100%;
+    background-color: #77A69B;
+    border-radius: 15px;
+    
+}
+.add-expense-btn {
+    width: 300px;
+    height: 50px;
+    background-color: #F8F6F5;
+    border-radius: 20px;
+    margin: 1% 0;
+    border: none;
+    color: #65656586;
+    cursor: pointer;
+    font-size: 1.5rem;
+    text-align: center;
+    font-weight: 600;
+}
+
+
+
+/* ********************************************************************* */
+.second-item {
+    text-align: left;
+    align-items: left;
+    display: flex;
+    flex-direction: column;
+    height: 300px;
     width: 100%;
     background-color: #3B5D7D;
     border-radius: 15px;
-    margin: 2% 4%;
-}
-
-.top-left h2 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
     color: #fff;
+    padding: 0 5%;
 }
 
-/* ********************************************************************* */
+.change-pasword {
+    margin-top: 1%;
+    display: flex;
+    flex-direction: column;
+   
+    
+}
 
+.password-label {
+    font-size: 14px;
+    
+    font-weight: bold;
+    margin-top: 5px;
+}
+.password-input{
+    width: 100%;
+}
+
+.password-input[type="password"] {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    
+}
+
+.btn {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 15px;
+    width: 250px;
+    background-color: #95D1D5;
+    border-radius: 12px;
+}
+
+.btn:hover {
+    background-color: #95D1D5;
+}
+
+.button-area{
+    align-items: center;
+    text-align: center;
+}
 
 
 
@@ -125,32 +164,51 @@ body {
 
 /* ******************************BOTTOM LEFT ******************************* */
 
-.bottom-left {
+.grid-item2 {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 1% 2%;
-    width: 90%;
-    height: 100%;
     box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 20px;
-    background-color: #77A69B;
+    flex: 1;
+    margin-top: 1%;
+    margin-left: 2%;
+    background-color: #738DA5;
+    padding: 20px;
+    align-items: center;
+    width: 50%;
     border-radius: 20px;
     
 }
 
-.bottom-left h2 {
-    font-size: 1.5rem;
-    margin-bottom: 0.6rem;
+.set-budget {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
-    text-align: center;
-    color: #fff;
+    
 }
 
+.budget-input {
+    flex: 1;
+    margin-right: 10px;
+    border-radius: 20px;
+    height: 40px;
+}
 
+.button-area {
+flex: 0;
+}
 
-
+.btn1 {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 150px;
+    height: 50px;
+    background-color: #95d1d5b7;
+   
+}
 
 /* *************************************************************************** */
 
@@ -160,36 +218,14 @@ body {
 
 
 /* ****************************** TOP RIGHT  ****************************** */
-.top-right {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    padding: 3% 5%;
-    height: 100%;
-    width: 100%;
-    background-color: #3B5D7D;
-    border-radius: 15px;
-    margin: 2% 4%;
-}
-.top-right h2{
-    font-size: 1.5rem;
-    margin-bottom: 0.6rem;
-    width: 100%;
-    text-align: center;
-    color: #fff;
 
-}
-
-.chart-container {
-    width: 300px;
-    height: 250px;
-}
 /* *************************************************************************** */
 
 
 
 
+
+/* ****************************** BOTTOM RIGHT  ****************************** */
 
 
 /* *************************************************************************** */
@@ -318,16 +354,8 @@ box-shadow: 4px 6px 4px -3px rgba(0,0,0,0.69);
     .navbar-toggle {
         display: none;
     }
-    .grid-container {
-        display: grid;
-        grid-gap: 0px;
-        height: 100%;
-        width: 100%;
-    }
-
+    
 }
-
-
 
 /* Mobile and Tablet Styles */
 @media screen and (max-width: 1000px) {
@@ -378,17 +406,13 @@ box-shadow: 4px 6px 4px -3px rgba(0,0,0,0.69);
         height: auto;
         padding: 1rem;
     }
-
-    .list-view {
-        height: auto;
+    .grid-item1 .avatar{
+        margin-top: -5px;
+    }
+    .grid-item2{
         width: 100%;
-        height: 350px;
-        box-sizing: border-box;
-        overflow-y:scroll;
     }
-    .grid-item1:last-child{
-        grid-column: 1;
-    }
+    
   
     
 }

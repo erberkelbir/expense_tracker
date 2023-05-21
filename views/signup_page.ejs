@@ -26,7 +26,7 @@
                 <h2 class="text-left welcome-text">Welcome to Expense Tracker</h2>
                 <h3 class="text- mb-4 sign-in-text">Sign in</h3>
                 <!-- Sign In form -->
-                <form id="signin-form" class="mb-3" action="/signin" method="post">
+                <form id="signin-form" class="mb-3" action="/signup" method="post">
                     <div class="mb-3">
                         <div class="form-floating">
                             <label for="floatingInput">Username</label>
@@ -45,13 +45,24 @@
                         </div>
                         <div id="password-message" class="mt-2"></div>
                     </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Confirm Password</label>
+                        <div class="input-group">
+                            <input type="password" class="form-control" id="password" placeholder="Password"
+                                oninput="validatePassword()" name="password">
+                            <span class="input-group-text" onclick="togglePasswordVisibility()">
+                                <i class="bi bi-eye" id="eye-icon"></i>
+                            </span>
+                        </div>
+                        <div id="password-message" class="mt-2"></div>
+                    </div>
                     <button type="submit" class="btn btn-primary w-100">Sign in</button>
                 </form>
 
                 <div style="text-align: center;margin: 15px;">or</div>
 
                 <!-- Sign Up form -->
-                <form id="signup-form" class="mb-3" action="/signup" method="post">
+                <form id="signup-form" class="mb-3" action="/signin" method="post">
                     <!-- Add your input fields here -->
                     <button type="submit" class="btn btn-primary w-100">Sign up</button>
                 </form>

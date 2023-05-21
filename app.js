@@ -87,6 +87,15 @@ app.get('/',async (req, res) => {
   // Redirect the user to the homepage 
 });
 
+app.get('/signup',async (req, res) => {
+  res.render("signup_page")
+
+  // TODO: Validate the email and password
+
+  // Redirect the user to the homepage 
+});
+
+
 app.get('/login_page',async (req, res) => {
   res.render("login_page")
 
@@ -108,6 +117,12 @@ app.get('/friends', (req, res) => {
   // Render the friends page
   res.render('friends_page' , {items: items});
 });
+
+app.get('/settings', (req, res) => {
+  // Render the friends page
+  res.render('settings_page');
+});
+
 
 app.get('/logout', function(req, res) {
 // Connect to MongoDB database
