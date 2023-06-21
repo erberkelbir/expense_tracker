@@ -1,4 +1,4 @@
-function showProfile(button) {
+export function showProfile(button) {
     // Find the parent list-item1 element
     const listItem = button.closest('.list-item1');
   

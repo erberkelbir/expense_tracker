@@ -1,3 +1,4 @@
+
 // Import necessary modules
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -36,7 +37,6 @@ const items = [
   },
   // ... more items
 ];
-
 const app = express();
 app.use(express.static(path.join(__dirname + '../public')));
 // Set up EJS view engine
@@ -47,11 +47,17 @@ app.use(express.static("public"));
 
 
 app.post('/signin', (req, res) => {
+  console.log(req.body)
   res.redirect('/dashboard');
 });
 
 app.post('/logout', (req, res) => {
   res.redirect('/');
+});
+
+app.post('/add_expense', (req, res) => {
+  console.log(req.body)
+  res.redirect('/dashboard');
 });
   
 
@@ -108,9 +114,14 @@ app.get('/dashboard', (req, res) => {
   // Render the dashboard page
   res.render('dashboard');
 });
+
 app.get('/signup', (req, res) => {
   // Render the signup page
   res.render('signup');
+});
+
+app.get('/show_profile', (req, res) => {
+  console.log(req.query); // This will log "erberk1"
 });
 
 app.get('/friends', (req, res) => {
@@ -138,3 +149,7 @@ app.get('/logout', function(req, res) {
 // Start server
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Listening on port ${port}...`));
+
+
+
+

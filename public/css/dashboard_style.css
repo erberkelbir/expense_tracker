@@ -73,6 +73,9 @@ body {
     border-radius: 15px;
     margin: 2% 4%;
 }
+.reset-style, .reset-style * {
+    all: revert;
+}
 
 .top-left h2 {
     font-size: 1.5rem;

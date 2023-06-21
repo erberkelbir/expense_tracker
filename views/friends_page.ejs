@@ -44,16 +44,22 @@
             <h2>Friends List</h2>
             <div class="list-view1">
               <div class="list-item1">
-                <div class="item-info1" >
-                  <div class="friend-name">{friendusername}</div>
-                  <button type="submit" class="btn btn-primary w-30" onclick="showProfile(this)">Show Profile</button>
-                </div>
+                <form method="get" action="/show_profile" class="reset-style">
+                  <div class="item-info1">
+                      <input type="hidden" name="friendname" id="friendname">
+                      <div id="erberk" class="friend-name">erberk1</div>
+                      <button type="submit" class="btn btn-primary w-30" onclick="showProfile(this)">Show Profile</button>
+                  </div>
+              </form>
               </div>
               <div class="list-item1">
-                <div class="item-info1" >
-                  <div class="friend-name">{friendusername2}</div>
-                  <button type="submit" class="btn btn-primary w-30" onclick="showProfile(this)">Show Profile</button>
-                </div>
+                <form method="get" action="/show_profile" class="reset-style">
+                  <div class="item-info1">
+                      <input type="hidden" name="friendname" id="friendname">
+                      <div id="erberk" class="friend-name">erberk2</div>
+                      <button type="submit" class="btn btn-primary w-30" onclick="showProfile(this)">Show Profile</button>
+                  </div>
+              </form>
               </div>
               <div class="list-item1">
                 <div class="item-info1" >
@@ -143,7 +149,14 @@
   </div>
 
 </body>
-<script src="/js/script.js"></script>
+<script >
+  function showProfile(buttonElement) {
+    const friendNameDiv = buttonElement.parentElement.querySelector('.friend-name');
+    const friendNameInput = buttonElement.parentElement.querySelector('#friendname');
+    friendNameInput.value = friendNameDiv.textContent;
+}
+</script>
+<script src="/app.js"></script>
 
 <script>
   function toggleNavbar() {

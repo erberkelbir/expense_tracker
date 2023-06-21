@@ -36,8 +36,13 @@
     <div class="right-side">
       <div class="grid-container">
         <div class="grid-item1">
+         
           <div class="top-left shadowx">
+            <form id="add-expense-form"  action="/add_expense" method="post">
+
             <h2>Add Expenses</h2>
+            
+
             <select id="category" name="category">
               <option value="" disabled selected>Select Category</option>
               <option value="groceries">Groceries</option>
@@ -46,8 +51,13 @@
             </select>
             <input type="number" id="amount" name="amount" min="0" step="1" placeholder="$">
             <input type="text" id="description" name="description" placeholder="Enter Description">
-            <button class="add-expense-btn" >Add Expense </button>
+            <button type ="submit" class="add-expense-btn" >Add Expense </button>
+            
+          </form>
+
           </div>
+          
+          
         </div>
         <div class="grid-item2">
         <div class="top-right shadowx">
