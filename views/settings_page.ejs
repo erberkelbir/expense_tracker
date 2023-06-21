@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/css/settings_styles.css">
+  <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="containerx ">
+    <div class="left-side shadowx">
+      <div class="avatar" alt="Avatar"></div>
+      <div class="greeting">Hello</div>
+      <div class="budget">$1231321</div>
+      <div class="description">Current Budget</div>
+      <div class="menu">
+        <a href="/dashboard">Dashboard</a>
+        <a href="/friends">Friends</a>
+        <a href="#" class="active">Settings</a>
+      </div>
+      <form action="/logout" method="post">
+        <button class="logout" type="submit" onclick="logout()">
+          <i class="bi bi-box-arrow-left"></i>
+        </button>
+      </form>
+      <button class="navbar-toggle" onclick="toggleNavbar()">
+        <span>&#9776;</span>
+      </button>
+    </div>
+    <div class="right-side">
+      <div class="grid-container ">
+
+        <div class="grid-item1 ">
+          <div class="first-item shadowx">
+            <div class="avatar" alt="Avatar"></div>
+            <h2 style="color : #fff">{username}</h2>
+            <button class="add-expense-btn shadowx">Change Username </button>
+            <button class="add-expense-btn shadowx">Change Profile Picture </button>
+          </div>
+
+        </div>
+        <div class="grid-item1">
+          <div class="second-item shadowx">
+            <form class="change-password">
+              <label class="password-label" for="current-password">Current Password:</label>
+              <input class="password-input" type="password" id="current-password" name="current-password" required>
+              <label class="password-label" for="new-password">Enter New Password:</label>
+              <input class="password-input" type="password" id="new-password" name="new-password" required>
+              <label class="password-label" for="confirm-new-password">Confirm New Password:</label>
+              <input class="password-input" type="password" id="confirm-new-password" name="confirm-new-password" required>
+              <div class="button-area">
+              <button class="btn shadowx">Apply Changes</button>
+             </div>
+            </form>
+          </div>
+        </div>
+
+
+
+        <div class="grid-item2 shadowx">
+          
+          <form class="set-budget">
+            <label class="budget-label" for="current-budget"></label>
+            <input class="budget-input" type="number" id="budget-input" name="budget-input" required>
+            <div class="button-area">
+            <button class="btn1  shadowx">Set Budget</button>
+           </div>
+          </form>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+<script src="/js/script.js"></script>
+
+<script>
+  function toggleNavbar() {
+    const leftSide = document.querySelector('.left-side');
+    leftSide.classList.toggle('open');
+  }
+</script>
+
+</html>
