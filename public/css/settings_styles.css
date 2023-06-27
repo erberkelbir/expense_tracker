@@ -166,15 +166,15 @@ body {
 
 .grid-item2 {
     display: flex;
-    box-sizing: border-box;
-    flex: 1;
     margin-top: 1%;
     margin-left: 2%;
     background-color: #738DA5;
-    padding: 20px;
+    padding: 10px;
     align-items: center;
     width: 50%;
+    height: 100px;
     border-radius: 20px;
+    margin-bottom: 3%;
     
 }
 
@@ -187,10 +187,8 @@ body {
 }
 
 .budget-input {
-    flex: 1;
-    margin-right: 10px;
     border-radius: 20px;
-    height: 40px;
+    width: 60%;
 }
 
 .button-area {

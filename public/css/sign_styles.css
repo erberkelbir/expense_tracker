@@ -68,13 +68,27 @@ background: linear-gradient(
     border-radius: 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 3% 5%;
-    width: 40%;
+    width: 50%;
     height: 550px;
     -webkit-box-shadow: 12px 17px 30px 1px rgba(0,0,0,0.52);
     -moz-box-shadow: 12px 17px 30px 1px rgba(0,0,0,0.52);
     box-shadow: 12px 17px 30px 1px rgba(0,0,0,0.52);
 
 }
+.sign-form {
+    margin-top: 2rem;
+    background-color: #faf6f6;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 3% 5%;
+    width: 50%;
+    height: 600px;
+    -webkit-box-shadow: 12px 17px 30px 1px rgba(0,0,0,0.52);
+    -moz-box-shadow: 12px 17px 30px 1px rgba(0,0,0,0.52);
+    box-shadow: 12px 17px 30px 1px rgba(0,0,0,0.52);
+
+}
+
 
 .welcome-text{
     font-size: 1.5rem;
