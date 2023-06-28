@@ -20,7 +20,8 @@
     <div class="left-side shadowx">
       <div class="avatar" alt="Avatar"></div>
       <div class="greeting">Hello</div>
-      <div class="budget">$1231321</div>
+      <div class="username"><%=Username %></div>
+      <div class="budget">$<%= Budget %></div>
       <div class="description">Current Budget</div>
       <div class="menu">
         <a href="/dashboard">Dashboard</a>
@@ -44,66 +45,46 @@
         <div class="grid-item1">
           <div class="top-left shadowx">
             <h2>Friends List</h2>
-            <div class="list-view1">
-              <div class="list-item1">
-                <form method="get" action="/show_profile" class="reset-style">
-                  <div class="item-info1">
-                      <input type="hidden" name="friendname" id="friendname">
-                      <div id="erberk" class="friend-name">erberk1</div>
-                      <button type="submit" class="btn btn-primary w-30" onclick="showProfile(this)">Show Profile</button>
+              <div class="list-view1">
+                <% friends.forEach(friend => { %>
+                  <div class="list-item1">
+                    <form method="get" action="/show_profile" class="reset-style">
+                      <div class="item-info1">
+                        <input type="hidden" name="friendname" id="friendname">
+                        <div id="<%= friend.id %>" class="friend-name"><%= friend.name %></div>
+                        <button type="submit" class="btn btn-primary w-30" onclick="showProfile(this)">Show Profile</button>
+                      </div>
+                    </form>
                   </div>
-              </form>
+                <% }) %>
               </div>
-              <div class="list-item1">
-                <form method="get" action="/show_profile" class="reset-style">
-                  <div class="item-info1">
-                      <input type="hidden" name="friendname" id="friendname">
-                      <div id="erberk" class="friend-name">erberk2</div>
-                      <button type="submit" class="btn btn-primary w-30" onclick="showProfile(this)">Show Profile</button>
-                  </div>
-              </form>
-              </div>
-              <div class="list-item1">
-                <div class="item-info1" >
-                  <div class="friend-name">{friendusername3}</div>
-                  <button type="submit" class="btn btn-primary w-30" onclick="showProfile(this)">Show Profile</button>
-                </div>
-              </div>
-              <div class="list-item1">
-                <div class="item-info1" >
-                  <div class="friend-name">{friendusername4}</div>
-                  <button type="submit" class="btn btn-primary w-30" onclick="showProfile(this)">Show Profile</button>
-                </div>
-              </div>
-              <div class="list-item1">
-                <div class="item-info1" >
-                  <div class="friend-name">{friendusername5}</div>
-                  <button type="submit" class="btn btn-primary w-30" onclick="showProfile(this)">Show Profile</button>
-                </div>
-              </div>
-            </div>
-
           </div>
         </div>
         <div class="grid-item1 ">
           <div class="top-right">
-            <h2>Top Right Container</h2>
+            <h2>Friend Requests</h2>
             <div class="upper-div">
-              <input type="text" id="username" placeholder="Enter username" />
-              <button class="send-request">Send request</button>
-            </div>
+              <form action="/add_friend" method="post">
+                <input type="text" id="username" name="username" placeholder="Enter username" />
+                <button type="submit" class="send-request">Send request</button>
+              </form>
+            </div>            
             <div class="list-view1">
-              <div class="list-item1">
-                <div class="item-info1">
-                  <!-- requests will appear here -->
-                  
-                  <span class="username">Username</span>
-                <div class="accept-reject-buttons">
-                  <button class="accept">&#10003;</button>
-                  <button class="reject">&#10005;</button>
+              <% Requests.forEach(request => { %>
+                <div class="list-item1">
+                  <div class="item-info1">
+                    <span class="username"><%= request.name %></span>
+                    <form action="/accept_friend" method="post">
+                      <input type="hidden" name="friendname" value="<%= request.name %>">
+                      <button type="submit" class="accept">✓</button>
+                    </form>
+                    <form action="/reject_friend" method="post">
+                      <input type="hidden" name="friendname" value="<%= request.name %>">
+                      <button type="submit" class="reject">✕</button>
+                    </form>
+                  </div>
                 </div>
-                </div>
-              </div>
+              <% }) %>              
             </div>
           </div>
         </div>
@@ -115,7 +96,7 @@
                 <div class="list-item1">
                   <div class="item-info1">
                     <div class="friend_username"><%= item.friend_username %></div>
-                    <div class="cat_id">Cat_ID: <%= item.cat_id %></div>
+                    <div class="cat_id">Category: <%= item.category %></div>
                     <div class="money">Money: $<%= item.money %></div>
                     <div class="date">Date: <%= item.date %></div>
                   </div>

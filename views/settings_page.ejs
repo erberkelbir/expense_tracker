@@ -18,7 +18,8 @@
     <div class="left-side shadowx">
       <div class="avatar" alt="Avatar"></div>
       <div class="greeting">Hello</div>
-      <div class="budget">$1231321</div>
+      <div class="username"><%=Username %></div>
+      <div class="budget">$<%= Budget %></div>
       <div class="description">Current Budget</div>
       <div class="menu">
         <a href="/dashboard">Dashboard</a>
@@ -40,7 +41,7 @@
         <div class="grid-item1 ">
           <div class="first-item shadowx">
             <div class="avatar" alt="Avatar"></div>
-            <h2 style="color : #fff">{username}</h2>
+            <h2 style="color : #fff"><%=Username %></h2>
             <button class="add-expense-btn shadowx">Change Username </button>
             <button class="add-expense-btn shadowx">Change Profile Picture </button>
           </div>
@@ -48,13 +49,13 @@
         </div>
         <div class="grid-item1">
           <div class="second-item shadowx">
-            <form class="change-password">
+            <form class="change-password" action="/update_password", method="post">
               <label class="password-label" for="current-password">Current Password:</label>
-              <input class="password-input" type="password" id="current-password" name="current-password" required>
+              <input class="password-input" type="password" id="current_password" name="current_password" required>
               <label class="password-label" for="new-password">Enter New Password:</label>
-              <input class="password-input" type="password" id="new-password" name="new-password" required>
+              <input class="password-input" type="password" id="new_password" name="new_password" required>
               <label class="password-label" for="confirm-new-password">Confirm New Password:</label>
-              <input class="password-input" type="password" id="confirm-new-password" name="confirm-new-password" required>
+              <input class="password-input" type="password" id="confirm_new_password" name="confirm_new_password" required>
               <div class="button-area">
               <button class="btn shadowx">Apply Changes</button>
              </div>
@@ -68,7 +69,7 @@
           
           <form class="set-budget">
             <label class="budget-label" for="current-budget"></label>
-            <input class="budget-input" type="number" id="budget-input" name="budget-input" required>
+            <input class="budget-input" type="number" id="budget_input" name="budget_input" required>
             <div class="button-area">
             <button class="btn1  shadowx">Set Budget</button>
            </div>

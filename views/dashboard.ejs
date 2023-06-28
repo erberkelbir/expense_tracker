@@ -18,7 +18,8 @@
     <div class="left-side shadowx">
       <div class="avatar" alt="Avatar"></div>
       <div class="greeting">Hello</div>
-      <div class="budget">$1231321</div>
+      <div class="username"><%=Username %></div>
+      <div class="budget">$<%= Budget %></div>
       <div class="description">Current Budget</div>
       <div class="menu">
         <a href="#" class="active">Dashboard</a>
@@ -72,42 +73,19 @@
           <div class="bottom-left shadowx">
             <h2>Transaction History</h2>
             <div class="list-view">
-              <div class="list-item">
-                <div class="item-info">
-                  <div class="cat_id">Cat_ID: 1</div>
-                  <div class="money">Money: $100</div>
-                  <div class="date">Date: 01-01-2022</div>
+              <% items.forEach(item => { %>
+                <div class="list-item">
+                  <div class="item-info">
+                    <div class="category">Category: <%= item.category %></div>
+                    <div class="money">Money: $<%= item.money %></div>
+                    <div class="date">Date: <%= item.date %></div>
+                  </div>
+                  <div class="description">Description: <%= item.description %></div>
                 </div>
-                <div class="description">Description: Grocery shopping</div>
-              </div>
-              <div class="list-item">
-                <div class="item-info">
-                  <div class="cat_id">Cat_ID: 1</div>
-                  <div class="money">Money: $100</div>
-                  <div class="date">Date: 01-01-2022</div>
-                </div>
-                <div class="description">Description: Grocery shopping</div>
-              </div>
-              <div class="list-item">
-                <div class="item-info">
-                  <div class="cat_id">Cat_ID: 1</div>
-                  <div class="money">Money: $100</div>
-                  <div class="date">Date: 01-01-2022</div>
-                </div>
-                <div class="description">Description: Grocery shopping</div>
-              </div>
-              <div class="list-item">
-                <div class="item-info">
-                  <div class="cat_id">Cat_ID: 1</div>
-                  <div class="money">Money: $100</div>
-                  <div class="date">Date: 01-01-2022</div>
-                </div>
-                <div class="description">Description: Grocery shopping</div>
-              </div>
-              <!-- Add more list items here -->
-            </div>
+              <% }) %>
           </div>
         </div>
+      </div>
 
 
 
@@ -115,38 +93,14 @@
           <div class="bottom-right shadowx">
             <h2>Total Expenses </h2>
             <div class="list-view">
-              <div class="list-item">
-                <div class="item-info">
-                  <div class="cat_id">Cat_ID: 1</div>
-                  <div class="money">Money: $100</div>
-                </div>
-              </div>
-              <div class="list-item">
-                <div class="item-info">
-                  <div class="cat_id">Cat_ID: 1</div>
-                  <div class="money">Money: $100</div>
-                </div>
-
-              </div>
-              <div class="list-item">
-                <div class="item-info">
-                  <div class="cat_id">Cat_ID: 1</div>
-                  <div class="money">Money: $100</div>
-                </div>
-
-              </div>
-              <div class="list-item">
-                <div class="item-info">
-                  <div class="cat_id">Cat_ID: 1</div>
-                  <div class="money">Money: $100</div>
-                </div>
-              </div>
-              <div class="list-item">
-                <div class="item-info">
-                  <div class="cat_id">Cat_ID: 1</div>
-                  <div class="money">Money: $100</div>
-                </div>
-              </div>
+                <% categories.forEach(item => { %>
+                  <div class="list-item">
+                    <div class="item-info">
+                      <div class="category">Category: <%= item.category %></div>
+                      <div class="money">Money: $<%= item.money %></div>
+                    </div>
+                  </div>
+                <% }) %>
             </div>
           </div>
         </div>
@@ -157,18 +111,19 @@
 </body>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="/js/script.js"></script>
-<script>
+<script type="text/javascript">
   function toggleNavbar() {
     const leftSide = document.querySelector('.left-side');
     leftSide.classList.toggle('open');
   }
+  const categories = <%- JSON.stringify(categories) %>;
+  console.log(categories);
   const ctx = document.getElementById('pieChart').getContext('2d');
   const data = {
-    labels: ['Category 1', 'Category 2', 'Category 3'],
+    labels: categories.map(item => item.category),
     datasets: [
       {
-        data: [50, 25, 25],
-        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
+        data: categories.map(item => item.money),
       },
     ],
   };
