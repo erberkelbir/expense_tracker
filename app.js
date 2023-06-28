@@ -21,6 +21,8 @@ const request_dict = {
   'getUserExpenses' : ['http://localhost:8080/user/expenses', 'GET'],
   'updateUserName': ['http://localhost:8080/user/update-username', 'PUT'],
   'resetPassword': ['http://localhost:8080/auth/reset-password', 'PUT'],
+  'getFriendshipExpensesByCategory': ['http://localhost:8080/friendship/expenses-by-category', 'GET'],
+  'getFriendshipExpensesAll': ['http://localhost:8080/friendship/expense', 'GET'],
 }
 
 // Import necessary modules
@@ -139,8 +141,23 @@ app.get('/signup', (req, res) => {
 });
 
 app.get('/show_profile', (req, res) => {
-  console.log('Friend: ',req.query); // This will log "erberk1"
-  res.redirect('/friends'); /// TODO : burada arkadaşın profil sayfasına yönlendirilecek
+  res.redirect('/friend_dashboard');
+});
+app.get('/friend_dashboard', async (req, res) => {
+  const resp = await apiRequest(request_dict['getFriendshipExpensesAll'][0], request_dict['getFriendshipExpensesAll'][1], {}, token);
+  item_list = [];
+  for (var i = resp.length-1; i >= 0; i--) {
+    item_list.push({
+      category: resp[i].expenseType.charAt(0).toUpperCase() + resp[i].expenseType.slice(1),
+      money: resp[i].amount,
+      date: resp[i].created.split('T')[0],
+      description: resp[i].description,
+
+    });
+  }
+  category_list = await getExpenseCategoriesTotal();
+  // Render the friend dashboard page
+  res.render('friend_dashboard', {items: item_list, categories: category_list, Budget: 1000, Username: username});
 });
 
 app.get('/friends', async (req, res) => {
@@ -247,6 +264,20 @@ app.get('/delete_expense', async (req, res) => {
 async function getExpenseCategoriesTotal(){
   var category_list = [];
   const resp_category = await apiRequest(request_dict['getExpenseCategoriesTotal'][0], request_dict['getExpenseCategoriesTotal'][1], {}, token);
+  for (const key in resp_category) {
+    if(resp_category[key] > 0){
+      category_list.push({
+        category: key.charAt(0).toUpperCase() + key.slice(1),
+        money: resp_category[key]
+      });
+    }
+  }
+  return category_list;
+};
+
+async function getFriendsExpenseCategoriesTotal(){
+  var category_list = [];
+  const resp_category = await apiRequest(request_dict['getFriendshipExpensesByCategory'][0], request_dict['getFriendshipExpensesByCategory'][1], {}, token);
   for (const key in resp_category) {
     if(resp_category[key] > 0){
       category_list.push({

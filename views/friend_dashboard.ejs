@@ -19,7 +19,8 @@
     <div class="left-side shadowx">
       <div class="avatar" alt="Avatar"></div>
       <div class="greeting">Hello</div>
-      <div class="budget">$1231321</div>
+      <div class="username"><%=Username %></div>
+      <div class="budget">$<%= Budget %></div>
       <div class="description">Current Budget</div>
       <div class="menu">
         <a href="/dashboard">Dashboard</a>
@@ -59,61 +60,34 @@
         </div>
         </div>
         <div class="grid-item1 ">
-            <div class="bottom-right shadowx">
-              <h2>Total Expenses </h2>
-              <div class="list-view">
-                <div class="list-item">
-                  <div class="item-info">
-                    <div class="cat_id">Cat_ID: 1</div>
-                    <div class="money">Money: $100</div>
+          <div class="bottom-right shadowx">
+            <h2>Total Expenses </h2>
+            <div class="list-view">
+                <% categories.forEach(item => { %>
+                  <div class="list-item">
+                    <div class="item-info">
+                      <div class="category">Category: <%= item.category %></div>
+                      <div class="money">Money: $<%= item.money %></div>
+                    </div>
                   </div>
-                </div>
-                <div class="list-item">
-                  <div class="item-info">
-                    <div class="cat_id">Cat_ID: 1</div>
-                    <div class="money">Money: $100</div>
-                  </div>
-  
-                </div>
-                <div class="list-item">
-                  <div class="item-info">
-                    <div class="cat_id">Cat_ID: 1</div>
-                    <div class="money">Money: $100</div>
-                  </div>
-  
-                </div>
-                <div class="list-item">
-                  <div class="item-info">
-                    <div class="cat_id">Cat_ID: 1</div>
-                    <div class="money">Money: $100</div>
-                  </div>
-                </div>
-                <div class="list-item">
-                  <div class="item-info">
-                    <div class="cat_id">Cat_ID: 1</div>
-                    <div class="money">Money: $100</div>
-                  </div>
-                </div>
-              </div>
+                <% }) %>
             </div>
           </div>
+        </div>
         <div class="grid-item1">
           <div class="bottom-left shadowx">
-            <h2>Friend's Transaction History</h2>
-            <div class="list-view1">
-              
-                <div class="list-item1">
-                  <div class="item-info1">
-                    <div class="friend_username">friend_username</div>
-                    <div class="cat_id">cat_id</div>
-                    <div class="money">money</div>
-                    <div class="date">date</div>
+            <h2>Transaction History</h2>
+            <div class="list-view">
+              <% items.forEach(item => { %>
+                <div class="list-item">
+                  <div class="item-info">
+                    <div class="category">Category: <%= item.category %></div>
+                    <div class="money">Money: $<%= item.money %></div>
+                    <div class="date">Date: <%= item.date %></div>
                   </div>
-                  <div class="description">Description</div>
+                  <div class="description">Description: <%= item.description %></div>
                 </div>
-            
-             
-              <!-- Add more list items here -->
+              <% }) %>
             </div>
           </div>
         </div>
@@ -127,7 +101,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="/js/script.js"></script>
 <script src="/app.js"></script>
-<script >
+<script type="text/javascript">
   function showProfile(buttonElement) {
     const friendNameDiv = buttonElement.parentElement.querySelector('.friend-name');
     const friendNameInput = buttonElement.parentElement.querySelector('#friendname');
@@ -135,21 +109,23 @@
 }
 
 
-
-
-
   function toggleNavbar() {
     const leftSide = document.querySelector('.left-side');
     leftSide.classList.toggle('open');
   }
+  
+  function goToMainPage(){
+    window.location.href = "/dashboard";
+  }
  
+  const categories = <%- JSON.stringify(categories) %>;
+  console.log(categories);
   const ctx = document.getElementById('pieChart').getContext('2d');
   const data = {
-    labels: ['Category 1', 'Category 2', 'Category 3'],
+    labels: categories.map(item => item.category),
     datasets: [
       {
-        data: [50, 25, 25],
-        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
+        data: categories.map(item => item.money),
       },
     ],
   };
