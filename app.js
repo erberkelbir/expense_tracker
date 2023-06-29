@@ -2,6 +2,7 @@ const apiRequest = require('./api');
 var token;
 var id;
 var username;
+var friends_name;
 const request_dict = {
   'loginUser' : ['http://localhost:8080/auth/login', 'POST'], //okay
   'registerUser' : ['http://localhost:8080/auth/register', 'POST'], //okay
@@ -21,8 +22,10 @@ const request_dict = {
   'getUserExpenses' : ['http://localhost:8080/user/expenses', 'GET'],
   'updateUserName': ['http://localhost:8080/user/update-username', 'PUT'],
   'resetPassword': ['http://localhost:8080/auth/reset-password', 'PUT'],
-  'getFriendshipExpensesByCategory': ['http://localhost:8080/friendship/expenses-by-category', 'GET'],
-  'getFriendshipExpensesAll': ['http://localhost:8080/friendship/expense', 'GET'],
+  'getFriendshipExpensesByCategory': ['http://localhost:8080/friendship/categories-total/', 'GET'],
+  'getFriendshipExpensesAll': ['http://localhost:8080/friendship/all-expenses/', 'GET'],
+  'getBudget': ['http://localhost:8080/user/get-budget', 'GET'],
+  'setBudget': ['http://localhost:8080/user/set-budget?budget=', 'PUT'],
 }
 
 // Import necessary modules
@@ -131,7 +134,8 @@ app.get('/dashboard', async (req, res) => {
   var category_list = await getExpenseCategoriesTotal();
   //res.render('expenses_page', {items: item_list});
   // Render the dashboard page
-  res.render('dashboard', {items: item_list, categories: category_list, Budget: 1000, Username: username});
+  var budget = await getBudget();
+  res.render('dashboard', {items: item_list, categories: category_list, Budget: budget, Username: username});
 });
 
 app.get('/signup', (req, res) => {
@@ -141,11 +145,15 @@ app.get('/signup', (req, res) => {
 });
 
 app.get('/show_profile', (req, res) => {
+  friends_name = req.query.friendname;
+  console.log("ANNNEEEEEEEEEE",req.query.friendname);
   res.redirect('/friend_dashboard');
 });
 app.get('/friend_dashboard', async (req, res) => {
-  const resp = await apiRequest(request_dict['getFriendshipExpensesAll'][0], request_dict['getFriendshipExpensesAll'][1], {}, token);
+  const resp = await apiRequest(request_dict['getFriendshipExpensesAll'][0]+friends_name, request_dict['getFriendshipExpensesAll'][1], {}, token);
   item_list = [];
+  console.log('ANANIN AMINA KOYAYIM: ', resp);
+  console.log(friends_name)
   for (var i = resp.length-1; i >= 0; i--) {
     item_list.push({
       category: resp[i].expenseType.charAt(0).toUpperCase() + resp[i].expenseType.slice(1),
@@ -155,9 +163,10 @@ app.get('/friend_dashboard', async (req, res) => {
 
     });
   }
-  category_list = await getExpenseCategoriesTotal();
+  category_list = await getFriendsExpenseCategoriesTotal();
+  var budget = await getBudget();
   // Render the friend dashboard page
-  res.render('friend_dashboard', {items: item_list, categories: category_list, Budget: 1000, Username: username});
+  res.render('friend_dashboard', {items: item_list, categories: category_list, Budget: budget, Username: username});
 });
 
 app.get('/friends', async (req, res) => {
@@ -175,12 +184,14 @@ app.get('/friends', async (req, res) => {
   };
   const friend_list= await getAllFriends()
   const request_list = await getFriendshipRequests()
-  res.render('friends_page' , {items: item_list, friends: friend_list, Requests: request_list, Budget: 1000, Username: username});
+  var budget = await getBudget();
+  res.render('friends_page' , {items: item_list, friends: friend_list, Requests: request_list, Budget: budget, Username: username});
 });
 
-app.get('/settings', (req, res) => {
+app.get('/settings', async (req, res) => {
   // Render the friends page
-  res.render('settings_page' , {Budget: 1000, Username: username});
+  var budget = await getBudget();
+  res.render('settings_page' , {Budget: budget, Username: username});
 });
 
 
@@ -277,7 +288,7 @@ async function getExpenseCategoriesTotal(){
 
 async function getFriendsExpenseCategoriesTotal(){
   var category_list = [];
-  const resp_category = await apiRequest(request_dict['getFriendshipExpensesByCategory'][0], request_dict['getFriendshipExpensesByCategory'][1], {}, token);
+  const resp_category = await apiRequest(request_dict['getFriendshipExpensesByCategory'][0]+friends_name, request_dict['getFriendshipExpensesByCategory'][1], {}, token);
   for (const key in resp_category) {
     if(resp_category[key] > 0){
       category_list.push({
@@ -311,7 +322,20 @@ app.post('/update_password', async (req, res) => {
   res.redirect('/settings'); //TODO: burda şifre başarılıyla değiştirildi gibi bir popup yapıp sonra settingse yönlendirilebilir
 });
 
+async function getBudget(){
+  const resp = await apiRequest(request_dict['getBudget'][0], request_dict['getBudget'][1], {}, token);
+  return resp;
+}
 
+async function updateBudget(budget){
+  const resp = await apiRequest(request_dict['setBudget'][0]+budget, request_dict['setBudget'][1], {}, token);
+  return resp;
+}
+
+app.post('/update_budget', async (req, res) => {
+  const resp = await updateBudget(req.body.budget_input);
+  res.redirect('/settings');
+});
 // Start server
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Listening on port ${port}...`));
