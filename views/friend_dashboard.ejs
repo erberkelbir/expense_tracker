@@ -12,7 +12,23 @@
   <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
   <title>Friends</title>
 </head>
-
+<script>
+  function updateAvatarDisplay() {
+    var avatarElems = document.querySelectorAll('.avatar');
+    var savedAvatar = localStorage.getItem('avatar');
+    
+    if (savedAvatar) {
+      for (var i = 0; i < avatarElems.length; i++) {
+        avatarElems[i].style.backgroundImage = 'url(' + savedAvatar + ')';
+      }
+    }
+  }
+  
+  // Initial avatar load
+  window.onload = function() {
+    updateAvatarDisplay();
+  }
+  </script>
 <body>
   <div class="containerx">
 
@@ -140,24 +156,6 @@
     data: data,
     options: options,
   });
-
-  // Avatar update function
-function updateAvatarDisplay() {
-  var avatarElems = document.querySelectorAll('.avatar');
-  var savedAvatar = localStorage.getItem('avatar');
-  
-  if (savedAvatar) {
-    for (var i = 0; i < avatarElems.length; i++) {
-      avatarElems[i].style.backgroundImage = 'url(' + savedAvatar + ')';
-    }
-  }
-}
-
-// Initial avatar load
-window.onload = function() {
-  updateAvatarDisplay();
-}
-
 </script>
 
 </html>
