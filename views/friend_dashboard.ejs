@@ -141,6 +141,23 @@
     options: options,
   });
 
+  // Avatar update function
+function updateAvatarDisplay() {
+  var avatarElems = document.querySelectorAll('.avatar');
+  var savedAvatar = localStorage.getItem('avatar');
+  
+  if (savedAvatar) {
+    for (var i = 0; i < avatarElems.length; i++) {
+      avatarElems[i].style.backgroundImage = 'url(' + savedAvatar + ')';
+    }
+  }
+}
+
+// Initial avatar load
+window.onload = function() {
+  updateAvatarDisplay();
+}
+
 </script>
 
 </html>

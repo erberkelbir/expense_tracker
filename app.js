@@ -302,11 +302,17 @@ async function getFriendsExpenseCategoriesTotal(){
 
 /// Settings page
 
-app.put('/update_username', async (req, res) => {
+app.post('/update_username', async (req, res) => {
+  console.log(req.body.username);
+  console.log(request_dict);
   const data = {
-    "username": req.body.username,
+    "name": req.body.username,
   }
-  const resp = await apiRequest(request_dict['updateUsername'][0], request_dict['updateUsername'][1], data, token);
+  const resp = await apiRequest(request_dict['updateUserName'][0], request_dict['updateUserName'][1], data, token);
+  console.log("++++" , resp);
+  if (resp){ 
+    username = req.body.username;
+  }
   res.redirect('/settings');  //TODO: bunun için settings_page'de popup açılacak ve oradan form ile alınıp buraya put ile gönderilecek
 });
 

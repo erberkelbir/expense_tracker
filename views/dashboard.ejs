@@ -38,7 +38,6 @@
     <div class="right-side">
       <div class="grid-container">
         <div class="grid-item1">
-         
           <div class="top-left shadowx">
             <form id="add-expense-form"  action="/add_expense" method="post">
 
@@ -138,6 +137,22 @@
     data: data,
     options: options,
   });
+  // Avatar update function
+function updateAvatarDisplay() {
+  var avatarElems = document.querySelectorAll('.avatar');
+  var savedAvatar = localStorage.getItem('avatar');
+  
+  if (savedAvatar) {
+    for (var i = 0; i < avatarElems.length; i++) {
+      avatarElems[i].style.backgroundImage = 'url(' + savedAvatar + ')';
+    }
+  }
+}
+
+// Initial avatar load
+window.onload = function() {
+  updateAvatarDisplay();
+}
 </script>
 
 
