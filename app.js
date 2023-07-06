@@ -146,13 +146,11 @@ app.get('/signup', (req, res) => {
 
 app.get('/show_profile', (req, res) => {
   friends_name = req.query.friendname;
-  console.log("ANNNEEEEEEEEEE",req.query.friendname);
   res.redirect('/friend_dashboard');
 });
 app.get('/friend_dashboard', async (req, res) => {
   const resp = await apiRequest(request_dict['getFriendshipExpensesAll'][0]+friends_name, request_dict['getFriendshipExpensesAll'][1], {}, token);
   item_list = [];
-  console.log('ANANIN AMINA KOYAYIM: ', resp);
   console.log(friends_name)
   for (var i = resp.length-1; i >= 0; i--) {
     item_list.push({
@@ -166,7 +164,7 @@ app.get('/friend_dashboard', async (req, res) => {
   category_list = await getFriendsExpenseCategoriesTotal();
   var budget = await getBudget();
   // Render the friend dashboard page
-  res.render('friend_dashboard', {items: item_list, categories: category_list, Budget: budget, Username: username});
+  res.render('friend_dashboard', {items: item_list, categories: category_list, Budget: budget, Username: username, friend_name:friends_name});
 });
 
 app.get('/friends', async (req, res) => {

@@ -84,6 +84,7 @@
 
         function validatePassword() {
             const passwordInput = document.getElementById('password');
+            const second_password = document.getElementById('confirm-password');
             const messageElement = document.getElementById('password-message');
             const password = passwordInput.value;
 
@@ -100,7 +101,10 @@
                 messageElement.textContent = 'Password must have at least one uppercase and one lowercase letter.';
                 return false;
             }
-
+            if( passwordInput.value !== second_password.value){
+                messageElement.textContent = 'Passwords do not match.';
+                return false;
+            }
             messageElement.textContent = 'Password is valid!';
             return true;
         }
