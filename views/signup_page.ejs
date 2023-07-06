@@ -39,8 +39,8 @@
                         <div class="input-group">
                             <input type="password" class="form-control" id="password" placeholder="Password"
                                 oninput="validatePassword()" name="password">
-                            <span class="input-group-text" onclick="togglePasswordVisibility()">
-                                <i class="bi bi-eye" id="eye-icon"></i>
+                            <span class="input-group-text" onclick="togglePasswordVisibility(this)">
+                                <i class="bi bi-eye" id="eye-icon" data-password-id="password"></i>
                             </span>
                         </div>
                         <div id="password-message" class="mt-2"></div>
@@ -48,14 +48,14 @@
                     <div class="mb-3">
                         <label for="password" class="form-label">Confirm Password</label>
                         <div class="input-group">
-                            <input type="password" class="form-control" id="password" placeholder="Password"
+                            <input type="password" class="form-control" id="confirm-password" placeholder="Password"
                                 oninput="validatePassword()" name="password">
-                            <span class="input-group-text" onclick="togglePasswordVisibility()">
-                                <i class="bi bi-eye" id="eye-icon"></i>
+                            <span class="input-group-text" onclick="togglePasswordVisibility(this)">
+                                <i class="bi bi-eye" id="eye-icon" data-password-id="confirm-password"></i>
                             </span>
                         </div>
                         <div id="password-message" class="mt-2"></div>
-                    </div>
+                    </div>                    
                     <button type="submit" class="btn btn-primary w-100">Sign up</button>
                 </form>
             </div>
@@ -66,9 +66,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.min.js"></script>
     <script>
-        function togglePasswordVisibility() {
-            const passwordInput = document.getElementById('password');
-            const eyeIcon = document.getElementById('eye-icon');
+        function togglePasswordVisibility(target) {
+            const eyeIcon = target.querySelector('i');
+            const passwordId = eyeIcon.getAttribute('data-password-id');
+            const passwordInput = document.getElementById(passwordId);
             if (passwordInput.type === 'password') {
                 passwordInput.type = 'text';
                 eyeIcon.classList.remove('bi-eye');
@@ -79,6 +80,7 @@
                 eyeIcon.classList.add('bi-eye');
             }
         }
+
 
         function validatePassword() {
             const passwordInput = document.getElementById('password');
